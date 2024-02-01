@@ -1,24 +1,21 @@
-def palindrome?(string)
+def palindrome?(str)
   i = 0
-  while i < string.length
-    if string[i] != string[(string.length - 1) - i]
-      return false
-    end
+  len = str.length
+  while i < len
+    return false if str[i] != str[(len - 1) - i]
 
     i += 1
   end
-
   return true
 end
 
-def longest_palindrome(string)
-	
+def longest_palindrome(str)
 	longest = nil
-	string.chars.each_index do |idx|	
+	str.chars.each_index do |idx|	
 		i = 1
-		until i > string.length
-			substring = string.slice(idx, i)
-			longest = substring if palindrome?(substring) && (longest.nil? || substring.length > longest.length)
+		until i > str.length
+			substr = str.slice(idx, i)
+			longest = substr if palindrome?(substr) && (longest.nil? || substr.length > longest.length)
 			i += 1
 		end
 	end
